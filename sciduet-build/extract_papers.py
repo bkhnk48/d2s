@@ -101,8 +101,9 @@ class TEIFile(object):
                         sections.append([head.text, head.get('n'), txt])
                     else:
                         if len(sections) == 0:
-                            print("Grobid processing error: " + self.filename)
-                        sections[-1][2] += txt
+                            print("Grobid processing error: " + str(self.filename))
+                        if len(sections) > 0:
+                            sections[-1][2] += txt
             start = 0
             for i in sections:
                 sent = nltk.tokenize.sent_tokenize(i[2])
