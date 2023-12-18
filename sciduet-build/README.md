@@ -13,6 +13,7 @@ python3 collect_files.py
 python3
 >>>import nltk
 >>>nltk.download('punkt')
+>>>exit()
 ```
 
 ### Paper Extraction: Grobid + PDFFigures 2.0
