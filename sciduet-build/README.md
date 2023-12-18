@@ -11,14 +11,19 @@ python collect_files.py
 
 ### Paper Extraction: Grobid + PDFFigures 2.0
 
-Follow installation steps from https://grobid.readthedocs.io/en/latest/Install-Grobid/ and https://github.com/kermitt2/grobid_client_python.
-
+Follow installation steps from https://grobid.readthedocs.io/en/latest/Install-Grobid/ and https://github.com/kermitt2/grobid_client_python. Please keep in mind that you should already install jdk 1.11 or above.
 ```console
 cd grobid-0.6.2
 ./gradlew run
-cd path/to/grobid-client-python
+```
+Then you open a new terminal (or new tab of the current terminal):
+```cd path/to/grobid-client-python
 grobid_client --input path/to/sciduet/data/papers --output path/to/sciduet/teidir --teiCoordinates processFulltextDocument
 ```
+For example (of the grobid_client):
+```grobid_client --input  ../data/papers/ --output ../teidir --teiCoordinates processFulltextDocument
+```
+Add here, you create a new folder namely teidir. The folder data/papers already is in sciduet-build.
 
 OPTIONAL: Use pdffigures2 to extract figures and tables from scientific papers (this repo omits automatic figure selection). https://github.com/allenai/pdffigures2
 ```console
@@ -31,7 +36,7 @@ sbt "runMain org.allenai.pdffigures2.FigureExtractorBatchCli path/to/sciduet/dat
 Convert tei.xml files from grobid into json.
 
 ```console
-python extract_papers.py
+python3 extract_papers.py
 ```
 
 ### Slide Extraction: Poppler pdftotext
@@ -40,7 +45,7 @@ Original code uses IBM Watson Discovery Package and Tesseract-OCR to extract tex
 We provide code for running the open-source command-line utility _pdftotext_ to achieve comparable results.
 
 ```console
-python extract_slides.py
+python3 extract_slides.py
 ```
 
 
