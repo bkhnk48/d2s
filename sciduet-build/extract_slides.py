@@ -143,10 +143,12 @@ def random_forest(json_in):
 
     nlp_rouge = nlp.load_metric('rouge')
     data = json_in
-    print("============", len(data))#show length of data
+    print("============", len(data))
 
     for i in data:
-        with open('paper_jsons/{}.grobid.json'.format(i)) as f:#add new extension: grobid
+        if not (os.path.isfile('paper_jsons/{}.grobid.json'.format(i))):
+            continue;
+        with open('paper_jsons/{}.grobid.json'.format(i)) as f:
             paper = json.load(f)
 
         # Preparing paper data
