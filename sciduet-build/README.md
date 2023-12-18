@@ -5,8 +5,14 @@ pip install -r requirements.txt
 
 ### Scrape conference archives
 ```console
-python scrape_urls.py
-python collect_files.py
+python3 scrape_urls.py
+python3 collect_files.py
+```
+### Import nltk (Option)
+```console
+python3
+>>>import nltk
+>>>nltk.download('punkt')
 ```
 
 ### Paper Extraction: Grobid + PDFFigures 2.0
