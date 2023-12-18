@@ -17,11 +17,13 @@ cd grobid-0.6.2
 ./gradlew run
 ```
 Then you open a new terminal (or new tab of the current terminal):
-```cd path/to/grobid-client-python
+```console
+cd path/to/grobid-client-python
 grobid_client --input path/to/sciduet/data/papers --output path/to/sciduet/teidir --teiCoordinates processFulltextDocument
 ```
 For example (of the grobid_client):
-```grobid_client --input  ../data/papers/ --output ../teidir --teiCoordinates processFulltextDocument
+```console
+grobid_client --input  ../data/papers/ --output ../teidir --teiCoordinates processFulltextDocument
 ```
 Add here, you create a new folder namely teidir. The folder data/papers already is in sciduet-build.
 
