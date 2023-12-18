@@ -61,7 +61,11 @@ def merge_titles(json_in):
     for i in json_in:
         counter = 0
         json_tmp[i] = {}
-        paper_title = df.loc[df.index[df['ID'] == str(i)][0], 'Title']
+        indices = df.index[df['ID'] == str(i)]
+        paper_title = "Title";
+        if len(indices) > 0:
+            paper_title = df.loc[indices[0], 'Title']
+        #paper_title = df.loc[df.index[df['ID'] == str(i)][0], 'Title']
         json_tmp[i]['paper_title'] = paper_title
         last_title = None
         for idx in range(len(json_in[i]['titles'])):
@@ -139,9 +143,10 @@ def random_forest(json_in):
 
     nlp_rouge = nlp.load_metric('rouge')
     data = json_in
+    print("============", len(data))#show length of data
 
     for i in data:
-        with open('paper_jsons/{}.json'.format(i)) as f:
+        with open('paper_jsons/{}.grobid.json'.format(i)) as f:#add new extension: grobid
             paper = json.load(f)
 
         # Preparing paper data
@@ -183,6 +188,8 @@ def main():
     prefilter_json = txt_to_json(txt_dir)
     prefilter_json = merge_titles(prefilter_json)
     prefilter_json = clean_up(prefilter_json)
+    
+    print("HERE");
 
     print(len(prefilter_json))
     with open('suppl_slides_prefilter.json', 'w') as f:
